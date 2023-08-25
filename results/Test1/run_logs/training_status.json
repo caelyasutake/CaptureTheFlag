@@ -1,0 +1,66 @@
+{
+    "CaptureTheFlag": {
+        "checkpoints": [
+            {
+                "steps": 999266,
+                "file_path": "results/Test1/CaptureTheFlag/CaptureTheFlag-999266.onnx",
+                "reward": 715.4545454545455,
+                "creation_time": 1692939684.596778,
+                "auxillary_file_paths": [
+                    "results/Test1/CaptureTheFlag/CaptureTheFlag-999266.pt"
+                ]
+            },
+            {
+                "steps": 1499093,
+                "file_path": "results/Test1/CaptureTheFlag/CaptureTheFlag-1499093.onnx",
+                "reward": 946.1363636363636,
+                "creation_time": 1692940350.929753,
+                "auxillary_file_paths": [
+                    "results/Test1/CaptureTheFlag/CaptureTheFlag-1499093.pt"
+                ]
+            },
+            {
+                "steps": 1999656,
+                "file_path": "results/Test1/CaptureTheFlag/CaptureTheFlag-1999656.onnx",
+                "reward": 855.0,
+                "creation_time": 1692941004.243059,
+                "auxillary_file_paths": [
+                    "results/Test1/CaptureTheFlag/CaptureTheFlag-1999656.pt"
+                ]
+            },
+            {
+                "steps": 2499100,
+                "file_path": "results/Test1/CaptureTheFlag/CaptureTheFlag-2499100.onnx",
+                "reward": 1268.1818181818182,
+                "creation_time": 1692941670.877544,
+                "auxillary_file_paths": [
+                    "results/Test1/CaptureTheFlag/CaptureTheFlag-2499100.pt"
+                ]
+            },
+            {
+                "steps": 2891574,
+                "file_path": "results/Test1/CaptureTheFlag/CaptureTheFlag-2891574.onnx",
+                "reward": 266.6666666666667,
+                "creation_time": 1692942255.008354,
+                "auxillary_file_paths": [
+                    "results/Test1/CaptureTheFlag/CaptureTheFlag-2891574.pt"
+                ]
+            }
+        ],
+        "elo": 499.3490684845995,
+        "final_checkpoint": {
+            "steps": 2891574,
+            "file_path": "results/Test1/CaptureTheFlag.onnx",
+            "reward": 266.6666666666667,
+            "creation_time": 1692942255.008354,
+            "auxillary_file_paths": [
+                "results/Test1/CaptureTheFlag/CaptureTheFlag-2891574.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

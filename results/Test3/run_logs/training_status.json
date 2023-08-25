@@ -1,0 +1,66 @@
+{
+    "CaptureTheFlag": {
+        "checkpoints": [
+            {
+                "steps": 18499632,
+                "file_path": "results/Test3/CaptureTheFlag/CaptureTheFlag-18499632.onnx",
+                "reward": 2116.25,
+                "creation_time": 1692968734.867202,
+                "auxillary_file_paths": [
+                    "results/Test3/CaptureTheFlag/CaptureTheFlag-18499632.pt"
+                ]
+            },
+            {
+                "steps": 18999796,
+                "file_path": "results/Test3/CaptureTheFlag/CaptureTheFlag-18999796.onnx",
+                "reward": 1147.5,
+                "creation_time": 1692969402.8565812,
+                "auxillary_file_paths": [
+                    "results/Test3/CaptureTheFlag/CaptureTheFlag-18999796.pt"
+                ]
+            },
+            {
+                "steps": 19499659,
+                "file_path": "results/Test3/CaptureTheFlag/CaptureTheFlag-19499659.onnx",
+                "reward": 1161.111111111111,
+                "creation_time": 1692970089.2651908,
+                "auxillary_file_paths": [
+                    "results/Test3/CaptureTheFlag/CaptureTheFlag-19499659.pt"
+                ]
+            },
+            {
+                "steps": 19999841,
+                "file_path": "results/Test3/CaptureTheFlag/CaptureTheFlag-19999841.onnx",
+                "reward": 1983.0,
+                "creation_time": 1692970743.492995,
+                "auxillary_file_paths": [
+                    "results/Test3/CaptureTheFlag/CaptureTheFlag-19999841.pt"
+                ]
+            },
+            {
+                "steps": 20000841,
+                "file_path": "results/Test3/CaptureTheFlag/CaptureTheFlag-20000841.onnx",
+                "reward": 1983.0,
+                "creation_time": 1692970743.57568,
+                "auxillary_file_paths": [
+                    "results/Test3/CaptureTheFlag/CaptureTheFlag-20000841.pt"
+                ]
+            }
+        ],
+        "elo": -3409.93632552213,
+        "final_checkpoint": {
+            "steps": 20000841,
+            "file_path": "results/Test3/CaptureTheFlag.onnx",
+            "reward": 1983.0,
+            "creation_time": 1692970743.57568,
+            "auxillary_file_paths": [
+                "results/Test3/CaptureTheFlag/CaptureTheFlag-20000841.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}

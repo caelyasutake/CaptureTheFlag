@@ -1,0 +1,39 @@
+{
+    "CaptureTheFlag": {
+        "checkpoints": [
+            {
+                "steps": 499789,
+                "file_path": "results/Test2/CaptureTheFlag/CaptureTheFlag-499789.onnx",
+                "reward": null,
+                "creation_time": 1692942977.04834,
+                "auxillary_file_paths": [
+                    "results/Test2/CaptureTheFlag/CaptureTheFlag-499789.pt"
+                ]
+            },
+            {
+                "steps": 978790,
+                "file_path": "results/Test2/CaptureTheFlag/CaptureTheFlag-978790.onnx",
+                "reward": 65.0,
+                "creation_time": 1692943620.696794,
+                "auxillary_file_paths": [
+                    "results/Test2/CaptureTheFlag/CaptureTheFlag-978790.pt"
+                ]
+            }
+        ],
+        "elo": 803.7006328018437,
+        "final_checkpoint": {
+            "steps": 978790,
+            "file_path": "results/Test2/CaptureTheFlag.onnx",
+            "reward": 65.0,
+            "creation_time": 1692943620.696794,
+            "auxillary_file_paths": [
+                "results/Test2/CaptureTheFlag/CaptureTheFlag-978790.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0"
+    }
+}
