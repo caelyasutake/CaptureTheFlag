@@ -28,9 +28,10 @@ public class MoveRedAgent : Agent
     [SerializeField] private Transform blueTarget;
 
     [SerializeField] private GameObject Flag;
+    [SerializeField] private Transform env;
 
-    public static bool target;
-    public static bool hasFlag;
+    public bool target;
+    public bool hasFlag;
 
     public override void OnEpisodeBegin()
     {
@@ -44,6 +45,9 @@ public class MoveRedAgent : Agent
         Flag.SetActive(true);
         target = false;
         hasFlag = false;
+
+        env.rotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
+        transform.rotation = Quaternion.identity;
     }
 
     public void Respawn()
@@ -105,12 +109,12 @@ public class MoveRedAgent : Agent
         }
         else if (other.name == "SafeZoneBlue")
         {
-            AddReward(25f);
-            target = false;
+            //AddReward(25f);
+            //target = false;
         }
         else if (other.name == "TargetAreaBlue")
         {
-            AddReward(15f);
+            AddReward(35f);
             target = false;
         }
 
@@ -150,7 +154,7 @@ public class MoveRedAgent : Agent
             if (other.TryGetComponent(out BlueAgent blueAgent))
             {
                 //Positive reward for tagging opponnet
-                AddReward(50f);
+                AddReward(25f);
             }
         }
         
@@ -162,7 +166,7 @@ public class MoveRedAgent : Agent
             Flag.SetActive(false);
 
             // Positive reward for getting flag
-            AddReward(75f);
+            AddReward(100f);
         }
 
         // Check if team wins round
@@ -170,30 +174,34 @@ public class MoveRedAgent : Agent
         {
             if (hasFlag == true)
             {
-                AddReward(100f);
+                AddReward(200f);
                 EndEpisode();
             }
         }
 
         if (other.name == "Right")
         {
-            AddReward(-10f);
-            EndEpisode();
+            AddReward(-50f);
+            //EndEpisode();
+            Respawn();
         }
         else if (other.name == "Left")
         {
-            AddReward(-10f);
-            EndEpisode();
+            AddReward(-50f);
+            //EndEpisode();
+            Respawn();
         }
         else if (other.name == "Top")
         {
-            AddReward(-10f);
-            EndEpisode();
+            AddReward(-50f);
+            //EndEpisode();
+            Respawn();
         }
         else if (other.name == "Bottom")
         {
-            AddReward(-10f);
-            EndEpisode();
+            AddReward(-50f);
+            //EndEpisode();
+            Respawn();
         }
     }
 }

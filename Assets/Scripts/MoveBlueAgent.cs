@@ -5,137 +5,6 @@ using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 
-/*
-public class MoveBlueAgent : Agent
-{
-    [SerializeField] private Transform opponent1;
-    [SerializeField] private Transform opponent2;
-    [SerializeField] private Transform opponent3;
-
-    [SerializeField] private Transform teammate1;
-    [SerializeField] private Transform teammate2;
-
-    [SerializeField] private Transform blueTarget;
-    [SerializeField] private Transform redTarget;
-    
-    public bool target = false;
-    public bool oppTarget = MoveRedAgent.target;
-    public bool oppFlag = MoveRedAgent.hasFlag;
-
-    public override void OnEpisodeBegin()
-    {
-        transform.localPosition = new Vector3(Random.Range(-4.5f, 4.5f), 8.9f, Random.Range(-13.5f, -13f));
-        teammate1.localPosition = new Vector3(Random.Range(-4.5f, 4.5f), 8.9f, Random.Range(-13.5f, -13f));
-        teammate2.localPosition = new Vector3(Random.Range(-4.5f, 4.5f), 8.9f, Random.Range(-13.5f, -13f));
-    }
-
-    public void Update()
-    {
-        oppTarget = MoveRedAgent.target;
-        oppFlag = MoveRedAgent.hasFlag;
-    }
-
-    public void Respawn()
-    {
-        transform.localPosition = new Vector3(Random.Range(-4.5f, 4.5f), 8.9f, Random.Range(-13.5f, -13f));
-    }
-
-    public override void CollectObservations(VectorSensor sensor)
-    {
-        sensor.AddObservation(oppTarget);
-        sensor.AddObservation(oppFlag);
-
-        sensor.AddObservation((Vector2)transform.localPosition);
-        sensor.AddObservation((Vector2)teammate1.localPosition);
-        sensor.AddObservation((Vector2)teammate2.localPosition);
-
-        sensor.AddObservation((Vector2)opponent1.localPosition);
-        sensor.AddObservation((Vector2)opponent2.localPosition);
-        sensor.AddObservation((Vector2)opponent3.localPosition);
-
-        sensor.AddObservation((Vector2)blueTarget.localPosition);
-        sensor.AddObservation((Vector2)redTarget.localPosition);
-    }
-
-    public override void OnActionReceived(ActionBuffers actions)
-    {
-        float moveX = actions.ContinuousActions[0];
-        float moveY = 0;
-        float moveZ = actions.ContinuousActions[2];
-
-        float movementSpeed = 5f;
-
-        transform.localPosition += new Vector3(moveX, moveY, moveZ) * Time.deltaTime * movementSpeed;
-    }
-
-    public override void Heuristic(in ActionBuffers actionsOut)
-    {
-        ActionSegment<float> continuousActions = actionsOut.ContinuousActions;
-
-        continuousActions[0] = Input.GetAxisRaw("Horizontal");
-        continuousActions[2] = Input.GetAxisRaw("Vertical");
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
-        // Check if agent is target
-        if (other.name == "TargetAreaBlue")
-        {
-            AddReward(-10f);
-            target = true;
-        }
-        else if (other.name == "SafeZoneRed")
-        {
-            target = false;
-        }
-        else if (other.name == "TargetAreaRed")
-        {
-            target = false;
-        }
-
-        // When agent contacts opponent given conditions
-        if (target == true)
-        {
-            if (other.TryGetComponent(out RedAgent redAgent))
-            {
-                AddReward(-50f);
-                Respawn();
-            }
-        }
-        else if (target == false)
-        {
-            if (other.TryGetComponent(out RedAgent redAgent))
-            {
-                // Positive reward for tagging opponnet
-                AddReward(100f);
-            }
-        }
-
-        if (other.name == "Right")
-        {
-            AddReward(-10f);
-            EndEpisode();
-        }
-        else if (other.name == "Left")
-        {
-            AddReward(-10f);
-            EndEpisode();
-        }
-        else if (other.name == "Top")
-        {
-            AddReward(-10f);
-            EndEpisode();
-        }
-        else if (other.name == "Bottom")
-        {
-            AddReward(-10f);
-            EndEpisode();
-        }
-    }
-}
-*/
-
 public class MoveBlueAgent : Agent
 {
 
@@ -159,6 +28,7 @@ public class MoveBlueAgent : Agent
     [SerializeField] private Transform redTarget;
 
     [SerializeField] private GameObject Flag;
+    [SerializeField] private Transform env;
 
     public bool target;
     public bool hasFlag;
@@ -175,6 +45,10 @@ public class MoveBlueAgent : Agent
         Flag.SetActive(true);
         target = false;
         hasFlag = false;
+
+        env.rotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
+        transform.rotation = Quaternion.identity;
+
     }
 
     public void Respawn()
@@ -236,12 +110,12 @@ public class MoveBlueAgent : Agent
         }
         else if (other.name == "SafeZoneRed")
         {
-            AddReward(25f);
-            target = false;
+            //AddReward(25f);
+            //target = false;
         }
         else if (other.name == "TargetAreaRed")
         {
-            AddReward(15f);
+            AddReward(35f);
             target = false;
         }
 
@@ -281,7 +155,7 @@ public class MoveBlueAgent : Agent
             if (other.TryGetComponent(out RedAgent redAgent))
             {
                 // Positive reward for tagging opponnet
-                AddReward(50f);
+                AddReward(25f);
             }
         }
 
@@ -292,7 +166,7 @@ public class MoveBlueAgent : Agent
             Flag.SetActive(false);
 
             // Positive reward for getting flag
-            AddReward(75f);
+            AddReward(100f);
         }
 
         // Check if team wins round
@@ -300,30 +174,34 @@ public class MoveBlueAgent : Agent
         {
             if (hasFlag == true)
             {
-                AddReward(100f);
+                AddReward(200f);
                 EndEpisode();
             }
         }
 
         if (other.name == "Right")
         {
-            AddReward(-10f);
-            EndEpisode();
+            AddReward(-50f);
+            //EndEpisode();
+            Respawn();
         }
         else if (other.name == "Left")
         {
-            AddReward(-10f);
-            EndEpisode();
+            AddReward(-50f);
+            //EndEpisode();
+            Respawn();
         }
         else if (other.name == "Top")
         {
-            AddReward(-10f);
-            EndEpisode();
+            AddReward(-50f);
+            //EndEpisode();
+            Respawn();
         }
         else if (other.name == "Bottom")
         {
-            AddReward(-10f);
-            EndEpisode();
+            AddReward(-50f);
+            //EndEpisode();
+            Respawn();
         }
     }
 }
